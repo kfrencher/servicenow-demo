@@ -11,7 +11,7 @@
         <short_description/>
         <size>md</size>
         <sp_column display_value="1">299ae0c62fd42010b145e36ef699b641</sp_column>
-        <sp_widget display_value="Demo Form">1c4c9eab2fd02010b145e36ef699b6b3</sp_widget>
+        <sp_widget display_value="">1c4c9eab2fd02010b145e36ef699b6b3</sp_widget>
         <sys_class_name>sp_instance</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-11-11 21:59:09</sys_created_on>
