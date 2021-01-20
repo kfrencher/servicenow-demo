@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_portal_catalog">
+    <m2m_sp_portal_catalog action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <order>100</order>
+        <sc_catalog display_value="Security">c65500d02f352010e7bcddda2799b6b7</sc_catalog>
+        <sp_portal display_value="Demo">bd3520c22fd42010b145e36ef699b6fa</sp_portal>
+        <sys_class_name>m2m_sp_portal_catalog</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-01-14 23:34:06</sys_created_on>
+        <sys_id>ed08dc9c2f352010e7bcddda2799b653</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Security.Demo</sys_name>
+        <sys_package display_value="demo" source="x_53417_demo">c8846c8e2f942010b145e36ef699b695</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="demo">c8846c8e2f942010b145e36ef699b695</sys_scope>
+        <sys_update_name>m2m_sp_portal_catalog_ed08dc9c2f352010e7bcddda2799b653</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-01-14 23:34:06</sys_updated_on>
+    </m2m_sp_portal_catalog>
+</record_update>
