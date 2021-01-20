@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($scope, spModal, $q, spUtil) {
+	$scope.useGet = function() {
+		this.server.get({message: 'my message'}).then(function(response) {
+			spUtil.addInfoMessage(response.data.message);
+		});
+	};
+	$scope.addMember = function() {
+		var shared = { 
+			g_form: null,
+			form: null
+		};
+		spModal.open({
+			title: 'demo',
+			widget: 'add_member_widget',
+			widgetInput: { board: '9200c19f2f502010b145e36ef699b6d8' },
+			shared: shared,
+			onSubmit: function() {
+				$scope.saving = true;
+				var g_form = shared.g_form;
+				debugger;
+				return $q(function(resolve, reject) {
+					if(g_form.$private.validateForm()) {
+						resolve({status: 'Success'});
+					} else {
+						resolve({errorMessage: 'Something is required'});
+					}
+				});
+			}
+		}).then(function() {
+			var g_form = shared.g_form;
+			var member = new GlideRecord('sys_user');
+			$scope.members.push({
+				name: g_form.getDisplayValue('user'),
+				reviewer: '',
+				status: g_form.getDisplayValue('status')
+			});
+			$scope.saving = false;
+		},
+						function() {
+			$scope.saving = false;
+		});
+	};
+	
+	$scope.removeMember = function(memberToRemove) {
+		$scope.members = $scope.members.filter(function(member) {
+			return member != memberToRemove;
+		});
+	}
+	
+	$scope.members = [{
+		name: 'Ken',
+		reviewer: 'Reviewer 1',
+		status: 'Active'
+	}, {
+		name: 'Ben',
+		reviewer: 'Reviewer 2',
+		status: 'Inactive'
+	}]
+	
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>board_member_table</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Board Member Table</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  data.showTable = $sp.getParameter('sys_id') != -1;
+  if(input) {
+    data.message = input.message;
+  }
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-11-06 21:59:34</sys_created_on>
+        <sys_id>8cbca40a2fd42010b145e36ef699b6b3</sys_id>
+        <sys_mod_count>35</sys_mod_count>
+        <sys_name>Board Member Table</sys_name>
+        <sys_package display_value="demo" source="x_53417_demo">c8846c8e2f942010b145e36ef699b695</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="demo">c8846c8e2f942010b145e36ef699b695</sys_scope>
+        <sys_update_name>sp_widget_8cbca40a2fd42010b145e36ef699b6b3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-11-12 21:57:43</sys_updated_on>
+        <template><![CDATA[<div ng-if="data.showTable">
+  <div class="alert alert-info" ng-if="saving">
+    <fa name="spinner" spin="true"></fa> Saving...
+  </div>
+  <button class="btn btn-default" ng-disabled="saving" ng-click="addMember()" type="button">
+    Add Member
+  </button>
+	<table class="table table-stripped table-hover">
+  	<thead>
+      <tr>
+        <td>Reviewee</td>
+        <td>Reviewer</td>
+        <td>Status</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="member in members">
+        <td>{{member.name}}</td>
+        <td>{{member.reviewer}}</td>
+        <td>{{member.status}}</td>
+        <td>
+          <button class="btn btn-default" type="button" ng-click="removeMember(member)">
+            Remove
+          </button>
+          <button class="btn btn-primary" type="button" ng-click="useGet()">
+            Use Get
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>]]></template>
+    </sp_widget>
+</record_update>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Demo Board Member" max_length="40" name="x_53417_demo_board_member" sizeclass="0" type="collection">
+        <element attributes="encode_utf8=false" label="Board" mandatory="true" max_length="32" name="board" reference="x_53417_demo_board" type="reference"/>
+        <element choice="3" label="Status" max_length="40" name="status" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Complete" value="complete"/>
+                <element inactive_on_update="false" label="In Progress" value="in_progress"/>
+                <element inactive_on_update="false" label="New" value="new"/>
+            </choice>
+        </element>
+        <element attributes="encode_utf8=false" label="Member" mandatory="true" max_length="32" name="user" reference="sys_user" type="reference"/>
+        <index name="index">
+            <element name="user"/>
+        </index>
+        <index name="index2">
+            <element name="board"/>
+        </index>
+    </element>
+</database>
